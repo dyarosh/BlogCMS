@@ -1,0 +1,1 @@
+a:2:{s:4:"main";a:2:{s:5:"title";s:52:"Отчеты по интернет магазину.";s:8:"template";s:9:"utr.phtml";}s:2:"db";a:5:{s:2:"db";s:5:"mysql";s:7:"db.host";s:9:"localhost";s:7:"db.user";s:4:"root";s:11:"db.password";s:7:"utr123x";s:11:"db.database";s:10:"media5_utr";}}
