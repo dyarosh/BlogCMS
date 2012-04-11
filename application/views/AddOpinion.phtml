@@ -1,14 +1,23 @@
-<p class="error"><?php if(isset($this->message)) echo $this->message; ?></p>
-<form action="AddOpinion.php" method="post">
+<?php
+    $request = \library\RequestRegistry::getRequest();
+?>
+<?php if(count($this->error)>0) : ?>
+<div class="error">
+    <?php foreach($this->error as $error) : ?>
+    <p><?php echo $error ?></p>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+<form action="?command=AddOpinion" method="post">
     <input type="hidden" name="submitted" value="yes" />
-    <p>Заголовок: <input type="text" name="title" /></p>
+    <p>Заголовок: <input type="text" name="title" value="<?php echo $request->getProperty('title') ?>" /></p>
     <p>Тип думки:
         <input type="radio" name="type" value="-1" /> - Негативна
-        <input type="radio" name="type" value="0" /> - Нейтральна
+        <input type="radio" name="type" value="0" checked="checked" /> - Нейтральна
         <input type="radio" name="type" value="1" /> - Позитивна
     </p>
-    <p>Ваше ім’я: <input type="text" name="name" /></p>
-    <p>Електронна адреса: <input type="email" name="email" /></p>
-    <p>Текст думки: <textarea name="text"></textarea></p>
+    <p>Ваше ім’я: <input type="text" name="author" value="<?php echo $request->getProperty('author') ?>" /></p>
+    <p>Електронна адреса: <input type="email" name="email" value="<?php echo $request->getProperty('email') ?>" /></p>
+    <p>Текст думки: <textarea name="text"><?php echo $request->getProperty('text') ?></textarea></p>
     <p><button type="submit">Відправити</button></p>
 </form>

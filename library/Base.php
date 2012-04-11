@@ -32,6 +32,7 @@ abstract class Base
         }
         self::$DB = new \PDO($dsn, $config['db']['db.user'], $config['db']['db.password']);
         self::$DB->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        self::$DB->query('SET NAMES UTF8');
     }
 
     function prepareStatement($stmt_s) {

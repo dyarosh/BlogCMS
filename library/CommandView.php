@@ -19,9 +19,9 @@ namespace library;
  */
 class CommandView extends Template
 {
-    function __construct($command) {
+    function __construct($view) {
         $this->setPath('../application/views/');
-        $this->setName("$command.phtml");
+        $this->setName($view);
     }
 
     function assign($array) {

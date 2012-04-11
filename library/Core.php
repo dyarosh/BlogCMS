@@ -50,15 +50,16 @@ class Core
             $request = new Request();
         }
         $command = $request->getProperty('command');
-        if(empty($report)) $command = 'AddOpinion';
+        if(empty($command)) $command = 'AddOpinion';
         $path_to_command = '../application/controllers/'.$command;
 
         $command_class_name = '\\application\\controllers\\'.$command;
 
         $controller = new $command_class_name;
+        $data = $controller->process();
 
-        $command_view = new CommandView($command);
-        //$command_view->assign($controller->process());
+        $command_view = new CommandView($data['view']);
+        $command_view->assign($data);
 
         $this->view($command_view);
     }
